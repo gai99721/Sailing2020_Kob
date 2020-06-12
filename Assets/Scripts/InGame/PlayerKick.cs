@@ -18,18 +18,8 @@ public class PlayerKick : MonoBehaviour
 
     private void Awake()
     {
-        foreach (Player player in PhotonNetwork.PlayerList)
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                return;
-            }
-            else
-            {
-                kickPlayer = player;
-            }
 
-        }
+        
 
         if (!PhotonNetwork.IsMasterClient)
         {
