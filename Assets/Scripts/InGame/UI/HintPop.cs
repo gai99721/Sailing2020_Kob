@@ -53,10 +53,10 @@ public class HintPop : MonoBehaviour
             HintUI.gameObject.SetActive(false);
         }
 
-        /*if(FindObjectOfType<Sailing.ShipObject>().IsGoal == true)
+        if(FindObjectOfType<Sailing.ShipObject>().IsGoal == true)
         {
-            IsHint = false;
-        }*/
+            Destroy(HintUI);
+        }
 
     }
 

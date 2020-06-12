@@ -1,5 +1,7 @@
 ﻿/*
  * 長嶋
+ * 
+ * 2020/06/11 小林更新
  */
 
 using System.Collections.Generic;
