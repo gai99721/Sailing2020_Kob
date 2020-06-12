@@ -20,8 +20,14 @@ public class PlayerKick : MonoBehaviour
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-
-            kickPlayer = player;
+            if (PhotonNetwork.IsMasterClient)
+            {
+                return;
+            }
+            else
+            {
+                kickPlayer = player;
+            }
 
         }
 
