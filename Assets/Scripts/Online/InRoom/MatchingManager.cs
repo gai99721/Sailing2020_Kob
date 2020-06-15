@@ -38,6 +38,12 @@ namespace Sailing.Online
         private MatchingCountdown countTimer;
         private bool isLimitTimeOver;
 
+        public Player kickPlayer
+        {
+            get;
+            private set;
+        }
+
         private void Awake()
         {
 
@@ -159,6 +165,10 @@ namespace Sailing.Online
                 sb = new StringBuilder();
                 sb.Append("Player").Append(number);
                 player.NickName = sb.ToString();
+                if(player.IsMasterClient == false)
+                {
+                    kickPlayer = player;
+                }
                 number++;
 
             }
@@ -189,6 +199,15 @@ namespace Sailing.Online
 
             SceneSwitch(SceneNameString.InGame);
 
+        }
+
+        public Player ReturnKickPlayer()
+        {
+            Player playerData;
+
+            playerData = kickPlayer;
+
+            return playerData;
         }
 
         #region PhotonCallback

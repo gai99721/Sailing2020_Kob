@@ -29,10 +29,9 @@ public class PlayerKick : MonoBehaviour
     {
         if (!PhotonNetwork.IsMasterClient)
         {
-            foreach(Player player in PhotonNetwork.PlayerList)
-            {
-                kickPlayer = player;
-            }
+
+            kickPlayer = FindObjectOfType<Sailing.Online.MatchingManager>().ReturnKickPlayer();
+
         }
     }
 
