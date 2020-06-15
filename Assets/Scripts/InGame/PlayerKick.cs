@@ -19,11 +19,20 @@ public class PlayerKick : MonoBehaviour
     private void Awake()
     {
 
-        
-
         if (!PhotonNetwork.IsMasterClient)
         {
             this.gameObject.SetActive(false);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            foreach(Player player in PhotonNetwork.PlayerList)
+            {
+                kickPlayer = player;
+            }
         }
     }
 
