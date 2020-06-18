@@ -10,7 +10,7 @@ using Photon.Pun.UtilityScripts;
 public class PlayerKick : MonoBehaviour
 {
 
-    public Player kickPlayer
+    public Player[] kickPlayer
     {
         get;
         private set;
@@ -39,7 +39,12 @@ public class PlayerKick : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.CloseConnection(kickPlayer);
+            int i = 0;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                PhotonNetwork.CloseConnection(kickPlayer[i]);
+                i++;
+            }
         }
     }
 

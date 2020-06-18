@@ -38,7 +38,7 @@ namespace Sailing.Online
         private MatchingCountdown countTimer;
         private bool isLimitTimeOver;
 
-        public Player kickPlayer
+        public Player[] kickPlayer
         {
             get;
             private set;
@@ -98,6 +98,15 @@ namespace Sailing.Online
                 if (PhotonNetwork.IsMasterClient)
                 {
                     ReadyToGame();
+                }
+                else
+                {
+                    int i = 0;
+                    foreach(Player player in PhotonNetwork.PlayerList)
+                    {
+                        kickPlayer[i] = player;
+                        i++;
+                    }
                 }
 
                 return;
@@ -165,10 +174,6 @@ namespace Sailing.Online
                 sb = new StringBuilder();
                 sb.Append("Player").Append(number);
                 player.NickName = sb.ToString();
-                if(player.IsMasterClient == false)
-                {
-                    kickPlayer = player;
-                }
                 number++;
 
             }
@@ -201,9 +206,9 @@ namespace Sailing.Online
 
         }
 
-        public Player ReturnKickPlayer()
+        public Player[] ReturnKickPlayer()
         {
-            Player playerData;
+            Player[] playerData;
 
             playerData = kickPlayer;
 
