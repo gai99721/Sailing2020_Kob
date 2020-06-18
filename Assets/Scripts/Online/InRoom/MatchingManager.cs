@@ -44,12 +44,18 @@ namespace Sailing.Online
             private set;
         }
 
+        public int i
+        {
+            get;
+            private set;
+        }
+
         private void Awake()
         {
-
+            i = 0;
             //メッセージ処理の実行を再開する
             PhotonNetwork.IsMessageQueueRunning = true;
-            int i = 0;
+            
 
             if (!PhotonNetwork.IsConnected || !PhotonNetwork.InRoom)
             {
@@ -61,15 +67,6 @@ namespace Sailing.Online
 
             if (courseData == null) { 
                 Debug.LogError(name + "にコースデータがアタッチされていません");
-            }
-
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                foreach (Player player in PhotonNetwork.PlayerList)
-                {
-                    kickPlayer[i] = player;
-                    i++;
-                }
             }
 
             countTimer = GetComponent<MatchingCountdown>();
@@ -113,6 +110,18 @@ namespace Sailing.Online
                 return;
             }
 
+        }
+
+        private void FixedUpdate()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                foreach(Player player in PhotonNetwork.PlayerList)
+                {
+                    kickPlayer[i] = player;
+                    i++;
+                }
+            }
         }
 
         /// <summary>
