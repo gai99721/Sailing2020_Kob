@@ -29,7 +29,10 @@ public class PlayerKick : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.CloseConnection(kickPlayer[0]);
+            for (int i = 0; i < 7; i++)
+            {
+                PhotonNetwork.CloseConnection(kickPlayer[i]);
+            }
         }
     }
 
