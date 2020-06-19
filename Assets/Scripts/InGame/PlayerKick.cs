@@ -10,11 +10,7 @@ using Photon.Pun.UtilityScripts;
 public class PlayerKick : MonoBehaviour
 {
 
-    public Player[] kickPlayer
-    {
-        get;
-        private set;
-    }
+    Player[] kickPlayer = new Player[7];
 
     private void Awake()
     {
@@ -25,7 +21,7 @@ public class PlayerKick : MonoBehaviour
         }
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-               kickPlayer = PhotonNetwork.PlayerList;
+            kickPlayer = FindObjectOfType<Sailing.Online.MatchingManager>().kickPlayer;
         }
     }
 

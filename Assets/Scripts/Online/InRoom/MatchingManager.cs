@@ -38,11 +38,7 @@ namespace Sailing.Online
         private MatchingCountdown countTimer;
         private bool isLimitTimeOver;
 
-        public Player[] kickPlayer
-        {
-            get;
-            private set;
-        }
+        public Player[] kickPlayer = new Player[7];
 
         public int i
         {
@@ -110,18 +106,6 @@ namespace Sailing.Online
                 return;
             }
 
-        }
-
-        private void FixedUpdate()
-        {
-            /*if (!PhotonNetwork.IsMasterClient)
-            {
-                foreach(Player player in PhotonNetwork.PlayerList)
-                {
-                    kickPlayer[i] = player;
-                    i++;
-                }
-            }*/
         }
 
         /// <summary>
@@ -234,7 +218,8 @@ namespace Sailing.Online
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             base.OnPlayerEnteredRoom(newPlayer);
-
+            kickPlayer[i] = newPlayer;
+            i++;
             UpdateMatchingPlayer();
 
         }
