@@ -31,6 +31,10 @@ public class PlayerKick : MonoBehaviour
         {
             for (int i = 0; i < 7; i++)
             {
+                if(kickPlayer[i] == null)
+                {
+                    return;
+                }
                 PhotonNetwork.CloseConnection(kickPlayer[i]);
             }
         }
