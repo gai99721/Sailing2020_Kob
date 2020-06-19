@@ -33,12 +33,7 @@ public class PlayerKick : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            int i = 0;
-            foreach (Player player in PhotonNetwork.PlayerList)
-            {
-                PhotonNetwork.CloseConnection(kickPlayer[1]);
-                i++;
-            }
+            PhotonNetwork.CloseConnection(kickPlayer[0]);
         }
     }
 
