@@ -114,14 +114,14 @@ namespace Sailing.Online
 
         private void FixedUpdate()
         {
-            if (!PhotonNetwork.IsMasterClient)
+            /*if (!PhotonNetwork.IsMasterClient)
             {
                 foreach(Player player in PhotonNetwork.PlayerList)
                 {
                     kickPlayer[i] = player;
                     i++;
                 }
-            }
+            }*/
         }
 
         /// <summary>

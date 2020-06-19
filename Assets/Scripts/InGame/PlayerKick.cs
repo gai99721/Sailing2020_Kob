@@ -30,7 +30,7 @@ public class PlayerKick : MonoBehaviour
         if (!PhotonNetwork.IsMasterClient)
         {
 
-            kickPlayer = FindObjectOfType<Sailing.Online.MatchingManager>().ReturnKickPlayer();
+            kickPlayer = PhotonNetwork.PlayerList;
 
         }
     }
@@ -42,7 +42,7 @@ public class PlayerKick : MonoBehaviour
             int i = 0;
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                PhotonNetwork.CloseConnection(kickPlayer[i]);
+                PhotonNetwork.CloseConnection(kickPlayer[1]);
                 i++;
             }
         }
